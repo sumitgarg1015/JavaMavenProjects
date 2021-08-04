@@ -1,0 +1,13 @@
+INFO    2021-08-04 20:04:22,290 [main] base.TestBase  - Initialize Set Up
+INFO    2021-08-04 20:04:22,293 [main] base.TestBase  - Config File loaded!
+INFO    2021-08-04 20:04:22,295 [main] base.TestBase  - Object Repository Loaded
+INFO    2021-08-04 20:04:22,919 [main] base.TestBase  - Driver is Set up
+INFO    2021-08-04 20:04:26,902 [main] base.TestBase  - Driver initialized
+INFO    2021-08-04 20:04:26,919 [main] base.TestBase  - Initialized ExplicitWait and Actions class
+INFO    2021-08-04 20:04:28,900 [main] base.TestBase  - Application Launched!
+INFO    2021-08-04 20:04:43,618 [main] base.TestBase  - Click on Login Link
+INFO    2021-08-04 20:04:43,855 [main] base.TestBase  - Mouse hovering on login link
+INFO    2021-08-04 20:04:44,229 [main] base.TestBase  - Click on Login button
+INFO    2021-08-04 20:04:46,739 [main] base.TestBase  - Switch to Frame
+INFO    2021-08-04 20:04:46,990 [main] base.TestBase  - Enter User ID
+INFO    2021-08-04 20:04:50,401 [main] base.TestBase  - Driver quit
