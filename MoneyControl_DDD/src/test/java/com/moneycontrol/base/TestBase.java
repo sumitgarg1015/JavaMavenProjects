@@ -1,5 +1,7 @@
 package com.moneycontrol.base;
 
+import static com.moneycontrol.utils.TestUtil.click;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -11,9 +13,11 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -32,7 +36,9 @@ public class TestBase {
 	public static Logger log = Logger.getLogger(TestBase.class);
 	public static ExtentReports extent = ExtentManager.getInstance();
 	public static ExtentTest test;
-
+	public static SoftAssert softAssert = new SoftAssert();
+	public static Select select; 
+	
 	@BeforeSuite
 	public void setUp() throws IOException {
 
@@ -74,6 +80,7 @@ public class TestBase {
 			
 			driver.get(config.getProperty("appUrl"));
 			log.info("Application Launched!");
+
 		}
 
 	}
@@ -84,8 +91,11 @@ public class TestBase {
 		if (driver != null) {
 			driver.close();
 			driver.quit();
+			
 			log.info("Driver quit");
 			extent.flush();
+			
+			softAssert.assertAll();
 		}
 
 	}

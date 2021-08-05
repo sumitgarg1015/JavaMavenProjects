@@ -3,63 +3,99 @@ package com.moneycontrol.utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import com.aventstack.extentreports.Status;
 import com.moneycontrol.base.TestBase;
 
-public class TestUtil extends TestBase{
-	
-public static WebElement getElement(String locatorProperty) {
-		
-		WebElement element=null;
+public class TestUtil extends TestBase {
+
+	public static WebElement getElement(String locatorProperty) {
+
+		WebElement element = null;
 		By locator = null;
-		
-		String prefix = locatorProperty.substring(locatorProperty.indexOf("_"));
-		
-		if(prefix.equalsIgnoreCase("_xpath")) {
+
+		String prefix = locatorProperty.substring(locatorProperty.indexOf("_") + 1);
+
+		if (prefix.equalsIgnoreCase("xpath")) {
 			locator = By.xpath(OR.getProperty(locatorProperty));
-		}else if(prefix.equalsIgnoreCase("_css")) {
+		} else if (prefix.equalsIgnoreCase("css")) {
 			locator = By.cssSelector(OR.getProperty(locatorProperty));
-		}else if(prefix.equalsIgnoreCase("_id")) {
+		} else if (prefix.equalsIgnoreCase("id")) {
 			locator = By.id(OR.getProperty(locatorProperty));
-		}else if(prefix.equalsIgnoreCase("_tagName")) {
+		} else if (prefix.equalsIgnoreCase("tagName")) {
 			locator = By.tagName(OR.getProperty(locatorProperty));
-		}else if(prefix.equalsIgnoreCase("_name")) {
+		} else if (prefix.equalsIgnoreCase("name")) {
 			locator = By.name(OR.getProperty(locatorProperty));
-		}else if(prefix.equalsIgnoreCase("_link")){
+		} else if (prefix.equalsIgnoreCase("link")) {
 			locator = By.partialLinkText(OR.getProperty(locatorProperty));
 		}
-		
+
 		element = driver.findElement(locator);
 		return element;
-		
+
 	}
 
+	//Click on the WebElement
 	public static void click(String locatorProperty) {
 		getElement(locatorProperty).click();
 		test.log(Status.PASS, "Clicked On " + locatorProperty);
+		log.info("Clicked on " + locatorProperty);
 	}
-	
-	public static void type(String locatorProperty, String valueProperty) {
-		getElement(locatorProperty).sendKeys(config.getProperty(valueProperty));
-		test.log(Status.PASS, valueProperty + " typed in " + locatorProperty);
+
+	//Sending any text to WebElement
+	public static void type(String locatorProperty, String value) {
+		getElement(locatorProperty).clear();
+		getElement(locatorProperty).sendKeys(value);
+		test.log(Status.PASS, value + " typed in " + locatorProperty);
+		log.info("Entered " + value + " in " + locatorProperty);
 	}
-	
+
+	//Mouse hovering on WebElement
 	public static void hoverMouse(String locatorProperty) {
 		act.moveToElement(getElement(locatorProperty)).build().perform();
+		test.log(Status.PASS, "Hovered Mouse over " + locatorProperty);
+		log.info("Mouse Hovered over " + locatorProperty);
 	}
 	
+	//Select the text from the dropdown using Select class
+	public static void selectItemUsingSelect(String locatorProperty, String value) {
+		select = new Select(getElement(locatorProperty));
+		select.selectByVisibleText(value);
+		test.log(Status.PASS, value + " selected in " + locatorProperty + " dropdown");
+	}
+	
+	//Getting any Text from WebElement
+	public static String getTextData(String locatorProperty) {
+		String textData = getElement(locatorProperty).getText();
+		test.log(Status.PASS, textData + " was fetched from " + locatorProperty);
+		return textData;
+	}
+	
+
+	//Wait for WebElement to be visible
 	public static void waitForElement(String locatorProperty) {
 		wait.until(ExpectedConditions.visibilityOf(getElement(locatorProperty)));
+		log.info("Waiting for " + locatorProperty + " to be visible");
 	}
-	
+
+	//Switch to frame
 	public static void switchToFrame(String locatorProperty) {
 		waitForElement(locatorProperty);
 		driver.switchTo().frame(getElement(locatorProperty));
+		log.info("Switched to Frame: " + locatorProperty);
 	}
-	
+
+	//Switch to main Window
 	public static void switchToDefault() {
 		driver.switchTo().defaultContent();
+		log.info("Switched to Main Window");
+	}
+
+	//Verify Text on the Webpage
+	public static void verifyPage(String locatorProperty, String textToCompareProperty) {
+		String textToVerify = getElement(locatorProperty).getText();
+		softAssert.assertTrue(textToVerify.equalsIgnoreCase(config.getProperty(textToCompareProperty)));
 	}
 
 }
