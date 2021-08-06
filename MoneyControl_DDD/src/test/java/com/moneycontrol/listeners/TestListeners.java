@@ -1,20 +1,24 @@
 package com.moneycontrol.listeners;
 
+import java.util.Arrays;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import static com.moneycontrol.utils.TestUtil.*;
-
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.model.Media;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.moneycontrol.base.TestBase;
 
 
 public class TestListeners extends TestBase implements ITestListener {
 	
-//	private Media media = new Media();
+	private String logMessage;
 	public void onTestStart(ITestResult result) {
-		test = extent.createTest(result.getName());
+		test = extent.createTest(result.getTestClass().getName()+ " - Test Case: " + result.getName());
 	}
 
 	/**
@@ -25,7 +29,10 @@ public class TestListeners extends TestBase implements ITestListener {
 	 * @see ITestResult#SUCCESS
 	 */
 	public void onTestSuccess(ITestResult result) {
-		test.pass("Test Case: " + result.getName().toUpperCase());
+		
+		logMessage = "<b> Test Passed: " + result.getName().toUpperCase() + "</b>";
+		Markup m = MarkupHelper.createLabel(logMessage, ExtentColor.GREEN);
+		test.pass(m);
 	}
 
 	/**
@@ -37,7 +44,15 @@ public class TestListeners extends TestBase implements ITestListener {
 	 */
 	public void onTestFailure(ITestResult result) {
 		
-//		media = (Media)MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot());
+		String exceptionMessage = Arrays.toString(result.getThrowable().getStackTrace());
+		
+		String logMessage = "<details><summary><b><font color=red>"
+				+ "Exception Occurred, Click here to see details:"
+				+ "</font></b></summary>" + exceptionMessage.replaceAll(",", "<br>") 
+				+ "</details>";
+//		test.log(Status.FAIL, );
+		test.fail(logMessage + "<b><font color=blue>Attached Screenshot:", 
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot()).build());
 		
 //		test.failfail("Test Failed: " + result.getName().toUpperCase(), media);
 

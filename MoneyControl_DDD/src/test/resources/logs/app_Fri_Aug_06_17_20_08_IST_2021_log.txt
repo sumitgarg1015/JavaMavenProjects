@@ -1,0 +1,18 @@
+INFO    2021-08-06 17:20:08,996 [main] com.moneycontrol.base.TestBase  - Initialize Set Up
+INFO    2021-08-06 17:20:08,998 [main] com.moneycontrol.base.TestBase  - Config File loaded!
+INFO    2021-08-06 17:20:08,999 [main] com.moneycontrol.base.TestBase  - Object Repository Loaded
+INFO    2021-08-06 17:20:09,562 [main] com.moneycontrol.base.TestBase  - Driver is Set up
+INFO    2021-08-06 17:20:12,866 [main] com.moneycontrol.base.TestBase  - Driver initialized
+INFO    2021-08-06 17:20:12,903 [main] com.moneycontrol.base.TestBase  - Initialized ExplicitWait and Actions class
+INFO    2021-08-06 17:20:14,933 [main] com.moneycontrol.base.TestBase  - Application Launched!
+INFO    2021-08-06 17:20:43,551 [main] com.moneycontrol.base.TestBase  - Clicked on moneyControlLink_link
+INFO    2021-08-06 17:20:43,853 [main] com.moneycontrol.base.TestBase  - Mouse Hovered over personalFinance_css
+INFO    2021-08-06 17:20:44,306 [main] com.moneycontrol.base.TestBase  - Waiting for incomeTax_css to be visible
+INFO    2021-08-06 17:21:03,503 [main] com.moneycontrol.base.TestBase  - Clicked on incomeTax_css
+INFO    2021-08-06 17:21:08,643 [main] com.moneycontrol.base.TestBase  - Entered 1200000.0 in taxableIncome_css
+INFO    2021-08-06 17:21:09,103 [main] com.moneycontrol.base.TestBase  - Clicked on calculateTax_xpath
+INFO    2021-08-06 17:21:09,575 [main] com.moneycontrol.base.TestBase  - Entered 1000000.0 in taxableIncome_css
+INFO    2021-08-06 17:21:10,004 [main] com.moneycontrol.base.TestBase  - Clicked on calculateTax_xpath
+INFO    2021-08-06 17:21:10,398 [main] com.moneycontrol.base.TestBase  - Entered 900000.0 in taxableIncome_css
+INFO    2021-08-06 17:21:10,846 [main] com.moneycontrol.base.TestBase  - Clicked on calculateTax_xpath
+INFO    2021-08-06 17:21:13,062 [main] com.moneycontrol.base.TestBase  - Driver quit

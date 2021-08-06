@@ -15,7 +15,11 @@ public class ExtentManager {
 		spark.config().setDocumentTitle("Extent Report (Data Driven Development)");
 		spark.config().setReportName("MoneyControl.com");
 		spark.config().setTheme(Theme.STANDARD);
+		spark.config().setEncoding("utf-8");
 		report.attachReporter(spark);
+		report.setSystemInfo("Automation Tester", "Sumit Garg");
+		report.setSystemInfo("Organization", "MoneyControl.com");
+		report.setSystemInfo("Build No", "M1222V23");
 		return report;
 		
 	}

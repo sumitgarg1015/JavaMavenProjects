@@ -1,0 +1,12 @@
+INFO    2021-08-06 16:44:00,948 [main] com.moneycontrol.base.TestBase  - Initialize Set Up
+INFO    2021-08-06 16:44:00,952 [main] com.moneycontrol.base.TestBase  - Config File loaded!
+INFO    2021-08-06 16:44:00,953 [main] com.moneycontrol.base.TestBase  - Object Repository Loaded
+INFO    2021-08-06 16:44:03,657 [main] com.moneycontrol.base.TestBase  - Driver is Set up
+INFO    2021-08-06 16:44:08,710 [main] com.moneycontrol.base.TestBase  - Driver initialized
+INFO    2021-08-06 16:44:08,754 [main] com.moneycontrol.base.TestBase  - Initialized ExplicitWait and Actions class
+INFO    2021-08-06 16:44:11,403 [main] com.moneycontrol.base.TestBase  - Application Launched!
+INFO    2021-08-06 16:44:32,439 [main] com.moneycontrol.base.TestBase  - Clicked on moneyControlLink_link
+INFO    2021-08-06 16:44:32,706 [main] com.moneycontrol.base.TestBase  - Mouse Hovered over personalFinance_css
+INFO    2021-08-06 16:44:32,889 [main] com.moneycontrol.base.TestBase  - Waiting for incomeTax_css to be visible
+INFO    2021-08-06 16:44:33,405 [main] com.moneycontrol.base.TestBase  - Clicked on incomeTax_css
+INFO    2021-08-06 16:44:37,813 [main] com.moneycontrol.base.TestBase  - Driver quit

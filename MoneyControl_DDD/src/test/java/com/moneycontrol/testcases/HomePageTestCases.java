@@ -13,7 +13,11 @@ public class HomePageTestCases {
 
 	@Test(enabled=false)
 	public void login_Account() {
-		click("moneyControlLink_link");
+		
+		if(isElementPresent("moneyControlLink_link")) {
+			click("moneyControlLink_link");
+		}
+		
 		hoverMouse("login_xpath");
 
 		click("loginButton_css");
@@ -33,20 +37,23 @@ public class HomePageTestCases {
 
 	}
 	
-	@Test
+	@Test(priority=0)
 	public void openIncomeTaxCalculator() {
 		
-		click("moneyControlLink_link");
+		if(isElementPresent("moneyControlLink_link")) {
+			click("moneyControlLink_link");
+		}
+		
 		hoverMouse("personalFinance_css");
 		waitForElement("incomeTax_css");
 		click("incomeTax_css");
-		
 		verifyContent("headingCalculator_xpath","incomeTax");
+		
 		softAssert.assertAll();
 		
 	}
 	
-	@Test(dependsOnMethods = {"openIncomeTaxCalculator"}, dataProviderClass=ExcelOps.class, dataProvider="dp")
+	@Test(priority = 1, dataProviderClass=ExcelOps.class, dataProvider="dp")
 	public void calculateTax(HashMap<String, String> data) {
 		
 		type("taxableIncome_css", data.get("Taxable_Amount"));

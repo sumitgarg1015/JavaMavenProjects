@@ -1,7 +1,5 @@
 package com.moneycontrol.base;
 
-import static com.moneycontrol.utils.TestUtil.click;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -39,7 +37,7 @@ public class TestBase {
 	public static SoftAssert softAssert = new SoftAssert();
 	public static Select select;
 	public static String fileName="";
-	
+	public static Date d;
 	@BeforeSuite
 	public void setUp() throws IOException {
 
@@ -47,7 +45,7 @@ public class TestBase {
 
 //			System.setProperty("log4j.configurationFile", "./resources/properties/log4j2.properties");
 			
-			Date d = new Date();
+			d = new Date();
 
 			fileName = d.toString().replace(" ", "_").replace(":", "_");
 			System.setProperty("current.date", fileName);
