@@ -41,7 +41,8 @@ public class HomePageTestCases {
 		waitForElement("incomeTax_css");
 		click("incomeTax_css");
 		
-		verifyPage("headingCalculator_xpath","incomeTax");
+		verifyContent("headingCalculator_xpath","incomeTax");
+		softAssert.assertAll();
 		
 	}
 	

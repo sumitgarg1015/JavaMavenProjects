@@ -37,7 +37,8 @@ public class TestBase {
 	public static ExtentReports extent = ExtentManager.getInstance();
 	public static ExtentTest test;
 	public static SoftAssert softAssert = new SoftAssert();
-	public static Select select; 
+	public static Select select;
+	public static String fileName="";
 	
 	@BeforeSuite
 	public void setUp() throws IOException {
@@ -48,8 +49,8 @@ public class TestBase {
 			
 			Date d = new Date();
 
-			String filename = d.toString().replace(" ", "_").replace(":", "_");
-			System.setProperty("current.date", filename);
+			fileName = d.toString().replace(" ", "_").replace(":", "_");
+			System.setProperty("current.date", fileName);
 
 			PropertyConfigurator.configure("./src/test/resources/properties/log4j.properties");
 			
@@ -94,8 +95,6 @@ public class TestBase {
 			
 			log.info("Driver quit");
 			extent.flush();
-			
-			softAssert.assertAll();
 		}
 
 	}

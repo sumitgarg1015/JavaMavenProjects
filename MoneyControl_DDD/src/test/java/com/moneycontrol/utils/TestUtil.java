@@ -1,6 +1,12 @@
 package com.moneycontrol.utils;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -10,6 +16,7 @@ import com.moneycontrol.base.TestBase;
 
 public class TestUtil extends TestBase {
 
+	private static String screenShotPath;
 	public static WebElement getElement(String locatorProperty) {
 
 		WebElement element = null;
@@ -93,9 +100,24 @@ public class TestUtil extends TestBase {
 	}
 
 	//Verify Text on the Webpage
-	public static void verifyPage(String locatorProperty, String textToCompareProperty) {
+	public static void verifyContent(String locatorProperty, String textToCompareProperty) {
 		String textToVerify = getElement(locatorProperty).getText();
-		softAssert.assertTrue(textToVerify.equalsIgnoreCase(config.getProperty(textToCompareProperty)));
+		softAssert.assertTrue(textToVerify.contains(config.getProperty(textToCompareProperty)));
+	}
+	
+	//Capture Screenshot
+	public static String captureScreenshot(){
+		
+		screenShotPath = "./target/screenshots" + fileName + ".jpg";
+		TakesScreenshot screen= (TakesScreenshot)driver;
+		File src = screen.getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(src, new File(screenShotPath));
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return screenShotPath;
 	}
 
 }

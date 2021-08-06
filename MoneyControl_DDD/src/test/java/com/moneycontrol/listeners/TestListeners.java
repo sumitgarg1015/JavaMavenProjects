@@ -3,11 +3,16 @@ package com.moneycontrol.listeners;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import static com.moneycontrol.utils.TestUtil.*;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.model.Media;
 import com.moneycontrol.base.TestBase;
 
-public class TestListeners extends TestBase implements ITestListener {
 
+public class TestListeners extends TestBase implements ITestListener {
+	
+//	private Media media = new Media();
 	public void onTestStart(ITestResult result) {
 		test = extent.createTest(result.getName());
 	}
@@ -31,7 +36,11 @@ public class TestListeners extends TestBase implements ITestListener {
 	 * @see ITestResult#FAILURE
 	 */
 	public void onTestFailure(ITestResult result) {
-		System.out.println("Test Failed: " + result.getName().toUpperCase());
+		
+//		media = (Media)MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot());
+		
+//		test.failfail("Test Failed: " + result.getName().toUpperCase(), media);
+
 	}
 
 	/**
