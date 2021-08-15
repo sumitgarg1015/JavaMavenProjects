@@ -1,11 +1,13 @@
 package com.moneycontrol.listeners;
 
+import static com.moneycontrol.utils.TestUtil.*;
+
 import java.util.Arrays;
 
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import static com.moneycontrol.utils.TestUtil.*;
+
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;

@@ -51,6 +51,12 @@ public class TestUtil extends TestBase {
 		test.log(Status.PASS, "Clicked On " + locatorProperty);
 		log.info("Clicked on " + locatorProperty);
 	}
+	
+	//Click on MoneyControl Link
+	public static void clickOnHomeLink(String locatorProperty) {
+		getElement(locatorProperty).click();
+		log.info("Clicked on " + locatorProperty);
+	}
 
 	// Sending any text to WebElement
 	public static void type(String locatorProperty, String value) {

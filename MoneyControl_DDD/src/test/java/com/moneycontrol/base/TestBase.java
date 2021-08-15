@@ -1,5 +1,7 @@
 package com.moneycontrol.base;
 
+import static com.moneycontrol.utils.TestUtil.*;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -38,6 +40,7 @@ public class TestBase {
 	public static Select select;
 	public static String fileName="";
 	public static Date d;
+	
 	@BeforeSuite
 	public void setUp() throws IOException {
 
@@ -79,6 +82,10 @@ public class TestBase {
 			
 			driver.get(config.getProperty("appUrl"));
 			log.info("Application Launched!");
+			
+			if(isElementPresent("moneyControlLink_link")) {
+				clickOnHomeLink("moneyControlLink_link");
+			}
 
 		}
 

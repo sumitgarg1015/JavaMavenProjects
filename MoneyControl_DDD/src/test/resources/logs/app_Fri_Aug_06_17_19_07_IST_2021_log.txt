@@ -1,7 +1,0 @@
-INFO    2021-08-06 17:19:07,504 [main] com.moneycontrol.base.TestBase  - Initialize Set Up
-INFO    2021-08-06 17:19:07,506 [main] com.moneycontrol.base.TestBase  - Config File loaded!
-INFO    2021-08-06 17:19:07,506 [main] com.moneycontrol.base.TestBase  - Object Repository Loaded
-INFO    2021-08-06 17:19:08,044 [main] com.moneycontrol.base.TestBase  - Driver is Set up
-INFO    2021-08-06 17:19:11,701 [main] com.moneycontrol.base.TestBase  - Driver initialized
-INFO    2021-08-06 17:19:11,730 [main] com.moneycontrol.base.TestBase  - Initialized ExplicitWait and Actions class
-INFO    2021-08-06 17:19:12,085 [main] com.moneycontrol.base.TestBase  - Application Launched!

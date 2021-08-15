@@ -2,21 +2,12 @@ package com.moneycontrol.testcases;
 
 import static com.moneycontrol.utils.TestUtil.*;
 
-import java.util.HashMap;
-
 import org.testng.annotations.Test;
-
-import com.moneycontrol.utils.ExcelOps;
-import static com.moneycontrol.utils.ExcelOps.*;
 
 public class HomePageTestCases {
 
-	@Test(enabled=false)
+	@Test
 	public void login_Account() {
-		
-		if(isElementPresent("moneyControlLink_link")) {
-			click("moneyControlLink_link");
-		}
 		
 		hoverMouse("login_xpath");
 
@@ -36,37 +27,6 @@ public class HomePageTestCases {
 		click("close_css");
 
 	}
-	
-	@Test(priority=0)
-	public void openIncomeTaxCalculator() {
-		
-		if(isElementPresent("moneyControlLink_link")) {
-			click("moneyControlLink_link");
-		}
-		
-		hoverMouse("personalFinance_css");
-		waitForElement("incomeTax_css");
-		click("incomeTax_css");
-		verifyContent("headingCalculator_xpath","incomeTax");
-		
-		softAssert.assertAll();
-		
-	}
-	
-	@Test(priority = 1, dataProviderClass=ExcelOps.class, dataProvider="dp")
-	public void calculateTax(HashMap<String, String> data) {
-		
-		type("taxableIncome_css", data.get("Taxable_Amount"));
-		
-		selectItemUsingSelect("taxProfile_css", data.get("Tax_Profile"));
-		
-		click("calculateTax_xpath");
-		
-		String taxAmount = getTextData("taxAmount_css");
-		String taxRate = getTextData("taxRate_css");
-		
-		System.out.println(taxAmount + ":" + taxRate);
-		
-	}
+
 
 }
